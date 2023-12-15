@@ -45,6 +45,14 @@ p, h1, h2, h3, h4, h5, h6 {
 /* Vars 
 ----------------------------------------- */
 :root {
+  /* Light Green Theme */
+  --bg-color: #C0CDBF;
+  --primary-color: #FBF4E4;
+  --border-color: #95B6A2;
+  --shadow-color: 116deg 8% 48%;
+  --heading-color: #333;
+  --text-color: #333;
+
   /* Dark Theme */
   --bg-color: #171717;
   --primary-color: #FFF7E8;
@@ -53,8 +61,7 @@ p, h1, h2, h3, h4, h5, h6 {
   --heading-color: var(--primary-color);
   --text-color: var(--bg-color);
 
-  --card-gap: 20px;
-  --site-header-height: 50px;
+  --site-header-height: 60px;
   --site-gutter: 20px;
 
   --shadow-elevation-low:
@@ -77,17 +84,10 @@ p, h1, h2, h3, h4, h5, h6 {
     -0.2px 50.1px 56.4px -2.5px hsl(var(--shadow-color) / 0.34);
 }
 
-@media (min-width: 500px) {
+@media (min-width: 1000px) {
   :root {
-    --card-gap: 35px;
     --site-header-height: 75px;
     --site-gutter: 50px;
-  }
-}
-
-@media (min-width: 1200px) {
-  :root {
-    --card-gap: 50px;
   }
 }
 
@@ -102,22 +102,12 @@ body {
   font-family: system-ui;
   font-size: 1rem;
   justify-content: center;
-  padding: var(--site-header-height) var(--site-gutter);
+  padding: var(--site-header-height) var(--site-gutter) 0;
 }
 
-.sr-only {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
-
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
   display: none;
-} */
+}
 
 
 /* Header 
@@ -127,7 +117,6 @@ body {
   box-shadow: var(--shadow-elevation-medium);
   color: var(--heading-color);
   display: grid;
-  font-size: 1.25rem;
   height: var(--site-header-height);
   place-items: center;
   position: fixed;
@@ -138,25 +127,57 @@ body {
 }
 
 .site-logo {
-  width: 85px;
+  font-size: 1.125rem;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 1000px) {
   .site-logo {
-    width: 115px;
+    font-size: 1.25rem;
   }
 }
 
 
 /* Deck
 ----------------------------------------- */
+.deck-container {
+  display: grid;
+  gap: var(--site-gutter);
+  grid-template-columns: 1fr;
+  overflow: hidden;
+}
+
+@media (min-width: 800px) {
+  .deck-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .deck {
   align-items: center;
-  /* cursor: grab; */
+  cursor: grab;
   display: flex;
-  flex-direction: column;
-  gap: var(--card-gap);
+  flex-direction: row;
+  gap: var(--site-gutter);
+  height: calc(50vh - calc(1 * var(--site-header-height)));
+  overflow-y: scroll;
   padding-top: var(--site-gutter);
+}
+
+@media (max-width: 799px) {
+  .deck-first {
+    align-items: flex-end;
+  }
+
+  .deck-last {
+    align-items: flex-start;
+  }
+}
+
+@media (min-width: 800px) {
+  .deck {
+    flex-direction: column;
+    height: calc(100vh - calc(1 * var(--site-header-height)));
+  }
 }
 
 
@@ -173,12 +194,18 @@ body {
   font-weight: bold;
   justify-content: center;
   padding: 5px;
-  width: 100%;
+  width: calc(100vw - calc(8 * var(--site-gutter)));
+}
+
+@media (min-width: 800px) {
+  .card {
+    width: calc(50vw - calc(2 * var(--site-gutter)));
+  }
 }
 
 .card__inner {
   align-items: center;
-  aspect-ratio: 3/2;
+  aspect-ratio: 1/1;
   border: 10px solid var(--border-color);
   border-radius: 12px;
   display: flex;
@@ -187,6 +214,13 @@ body {
   position: relative;
   width: 100%;
 }
+
+@media (min-width: 425px) {
+  .card__inner {
+    aspect-ratio: 16/9;
+  }
+}
+
 
 .card__inner::before,
 .card__inner::after {
@@ -206,16 +240,6 @@ body {
   border-radius: 8px;
 }
 
-@media (min-width: 860px) {
-  .card {
-    max-width: 50vw;
-  }
-
-  .card__inner {
-    padding: 30px;
-  }
-}
-
 @media (min-width: 1200px) {
   .card {
     padding: 10px;
@@ -230,34 +254,28 @@ body {
 /* Card inner elements
 ----------------------------------------- */
 .card__question {
-  font-size: 5vw;
+  font-size: 4vw;
   line-height: 1.25;
   text-align: center;
   text-wrap: balance;
 }
 
-.card__id {
-  font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
-  font-size: 0.875rem;
-  position: absolute;
-  bottom: 10px;
-  right: 15px;
-}
-
-@media (min-width: 500px) {
-  .card__id {
-    font-size: 1rem;
-  }
-}
-
-@media (min-width: 860px) {
+@media (min-width: 800px) {
   .card__question {
-    font-size: 3vw;
+    font-size: 2.5vw;
   }
 }
 
 @media (min-width: 1200px) {
-  .card__id {
-    font-size: 1vw;
+  .card__question {
+    font-size: 2vw;
   }
+}
+
+.card__id {
+  font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+  font-size: 1rem;
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
 }
