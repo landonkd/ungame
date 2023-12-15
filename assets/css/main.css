@@ -53,10 +53,12 @@ p, h1, h2, h3, h4, h5, h6 {
   --heading-color: var(--primary-color);
   --text-color: var(--bg-color);
 
+  /* Measures */
   --card-gap: 20px;
   --site-header-height: 50px;
   --site-gutter: 20px;
 
+  /* Shadows */
   --shadow-elevation-low:
     0px 0.5px 0.6px hsl(var(--shadow-color) / 0.34),
     0px 0.8px 0.9px -1.2px hsl(var(--shadow-color) / 0.34),
@@ -193,6 +195,7 @@ body {
   content: '';
   display: block;
   height: 100%;
+  pointer-events: none;
   position: absolute;
   width: 100%;
 }
