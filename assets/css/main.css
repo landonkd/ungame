@@ -47,6 +47,7 @@ p, h1, h2, h3, h4, h5, h6 {
 :root {
   /* Dark Theme */
   --bg-color: #171717;
+  --bg-color-l: #373737;
   --primary-color: #FFF7E8;
   --border-color: var(--bg-color);
   --shadow-color: 0deg 0% 0%;
@@ -57,7 +58,7 @@ p, h1, h2, h3, h4, h5, h6 {
   --card-gap: 20px;
   --site-header-height: 50px;
   --site-gutter: 20px;
-  --deck-offset-top: calc(var(--site-header-height) + var(--site-gutter));
+  --deck-offset-top: var(--card-gap);
 
   /* Shadows */
   --shadow-elevation-low:
@@ -106,7 +107,7 @@ body {
   font-size: 1rem;
   justify-content: center;
   overflow: hidden;
-  padding: var(--deck-offset-top) var(--site-gutter) var(--site-gutter);
+  padding-top: var(--site-header-height);
 }
 
 .sr-only {
@@ -121,6 +122,13 @@ body {
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+
+/* Site Main 
+----------------------------------------- */
+.site-main {
+  width: 100%;
 }
 
 
@@ -153,8 +161,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--card-gap);
-  height: calc(100vh - var(--deck-offset-top) );
+  height: calc(100vh - var(--site-header-height) );
   overflow-y: auto;
+  padding: var(--deck-offset-top) var(--site-gutter) var(--deck-offset-top);
+  scroll-padding-top: var(--deck-offset-top);
   scroll-snap-type: y mandatory;
 }
 
@@ -208,6 +218,18 @@ body {
 }
 
 
+/* Card modifiers
+----------------------------------------- */
+.card--end {
+  opacity: 0.1;
+}
+
+.card--end .card__question {
+  font-size: 7.5vw;
+  font-weight: 900;
+}
+
+
 /* Card inner elements
 ----------------------------------------- */
 .card__question {
@@ -250,6 +272,10 @@ body {
   .card__question {
     font-size: 3vw;
   }
+
+  .card--end .card__question {
+    font-size: 5vw;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -264,6 +290,10 @@ body {
 
   .card__question {
     font-size: 2vw;
+  }
+
+  .card--end .card__question {
+    font-size: 4vw;
   }
 
   .card__id {

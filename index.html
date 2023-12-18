@@ -25,6 +25,7 @@
 
   <!-- Site Main -->
   <main class="site-main">
+
     <!-- Deck -->
     <div class="deck deck" x-data="{ deck }">
       <template x-for="card in deck" :key="card.id">
@@ -35,7 +36,14 @@
           </div>
         </div>
       </template>
+      <!-- End card -->
+      <div class="card card--end">
+        <div class="card__inner">
+          <p class="card__question">The End</p>
+        </div>
+      </div>
     </div>
+    
   </main>
 
 </body>
