@@ -143,12 +143,6 @@ body {
   width: 85px;
 }
 
-@media (min-width: 500px) {
-  .site-logo {
-    width: 115px;
-  }
-}
-
 
 /* Deck
 ----------------------------------------- */
@@ -209,26 +203,6 @@ body {
   border-radius: 8px;
 }
 
-@media (min-width: 860px) {
-  .card {
-    max-width: 50vw;
-  }
-
-  .card__inner {
-    padding: 30px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .card {
-    padding: 10px;
-  }
-
-  .card__inner {
-    border-width: 20px;
-  }
-}
-
 
 /* Card inner elements
 ----------------------------------------- */
@@ -247,19 +221,47 @@ body {
   right: 15px;
 }
 
+
+/* Breakpoints
+----------------------------------------- */
 @media (min-width: 500px) {
+  .site-logo {
+    width: 115px;
+  }
+
   .card__id {
     font-size: 1rem;
   }
 }
 
 @media (min-width: 860px) {
+  .card {
+    max-width: 50vw;
+  }
+
+  .card__inner {
+    padding: 30px;
+  }
+
   .card__question {
     font-size: 3vw;
   }
 }
 
 @media (min-width: 1200px) {
+  .card {
+    max-width: 33.33%;
+    padding: 10px;
+  }
+
+  .card__inner {
+    border-width: 20px;
+  }
+
+  .card__question {
+    font-size: 2vw;
+  }
+
   .card__id {
     font-size: 1vw;
   }
