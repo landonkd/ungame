@@ -57,6 +57,7 @@ p, h1, h2, h3, h4, h5, h6 {
   --card-gap: 20px;
   --site-header-height: 50px;
   --site-gutter: 20px;
+  --deck-offset-top: calc(var(--site-header-height) + var(--site-gutter));
 
   /* Shadows */
   --shadow-elevation-low:
@@ -104,7 +105,8 @@ body {
   font-family: system-ui;
   font-size: 1rem;
   justify-content: center;
-  padding: var(--site-header-height) var(--site-gutter);
+  overflow: hidden;
+  padding: var(--deck-offset-top) var(--site-gutter) var(--site-gutter);
 }
 
 .sr-only {
@@ -117,9 +119,9 @@ body {
   width: 1px;
 }
 
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
   display: none;
-} */
+}
 
 
 /* Header 
@@ -148,11 +150,12 @@ body {
 ----------------------------------------- */
 .deck {
   align-items: center;
-  /* cursor: grab; */
   display: flex;
   flex-direction: column;
   gap: var(--card-gap);
-  padding-top: var(--site-gutter);
+  height: calc(100vh - var(--deck-offset-top) );
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
 }
 
 
@@ -169,6 +172,7 @@ body {
   font-weight: bold;
   justify-content: center;
   padding: 5px;
+  scroll-snap-align: start;
   width: 100%;
 }
 
@@ -207,7 +211,7 @@ body {
 /* Card inner elements
 ----------------------------------------- */
 .card__question {
-  font-size: 5vw;
+  font-size: 5.5vw;
   line-height: 1.25;
   text-align: center;
   text-wrap: balance;
@@ -250,7 +254,7 @@ body {
 
 @media (min-width: 1200px) {
   .card {
-    max-width: 33.33%;
+    max-width: 33.33vw;
     padding: 10px;
   }
 
