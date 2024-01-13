@@ -135,7 +135,7 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .dim {
-  animation: dim 0.75s ease-in-out 1;
+  animation: dim 0.5s ease-out 1;
 }
 
 
@@ -144,7 +144,7 @@ p, h1, h2, h3, h4, h5, h6 {
 .btn {
   background-color: var(--bg-color);
   border: none;
-  border-radius: 100%;
+  border-radius: 20px;
   box-shadow: var(--shadow-elevation-medium);
   cursor: pointer;
   padding: 20px;
@@ -222,15 +222,21 @@ body {
   width: 100%;
 }
 
+.site-main::before,
 .site-main::after {
   background: -webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,0)),to(var(--bg-color)));
   background: linear-gradient(to bottom,rgba(0,0,0,0) 0, var(--bg-color) 100%);
   bottom: 0;
   content: "";
+  height: 20%;
   left: 0;
   pointer-events: none;
   position: absolute;
   width: 100vw;
+  z-index: 5;
+}
+
+.site-main::after {
   height: 25%;
 }
 
@@ -347,7 +353,7 @@ body {
 
   .btn {
     background-color: var(--bg-color-l);
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 15px;
     transform: none;
   }
