@@ -71,15 +71,6 @@ p, h1, h2, h3, h4, h5, h6 {
     0px 1.6px 1.8px -0.8px hsl(var(--shadow-color) / 0.36),
     0px 4.1px 4.6px -1.7px hsl(var(--shadow-color) / 0.36),
     0px 10px 11.3px -2.5px hsl(var(--shadow-color) / 0.36);
-  --shadow-elevation-high:
-    0px 0.5px 0.6px hsl(var(--shadow-color) / 0.34),
-    0px 2.9px 3.3px -0.4px hsl(var(--shadow-color) / 0.34),
-    0px 5.5px 6.2px -0.7px hsl(var(--shadow-color) / 0.34),
-    0px 9px 10.1px -1.1px hsl(var(--shadow-color) / 0.34),
-    -0.1px 14.3px 16.1px -1.4px hsl(var(--shadow-color) / 0.34),
-    -0.1px 22.4px 25.2px -1.8px hsl(var(--shadow-color) / 0.34),
-    -0.1px 34px 38.3px -2.1px hsl(var(--shadow-color) / 0.34),
-    -0.2px 50.1px 56.4px -2.5px hsl(var(--shadow-color) / 0.34);
 }
 
 @media (min-width: 500px) {
@@ -112,7 +103,7 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .bounce {
-  animation: bounce 1s ease-out 1
+  animation: bounce 1s ease-out 1;
 }
 
 @keyframes spin {
@@ -128,14 +119,30 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .spin {
-  animation: spin 1s ease-out 1
+  animation: spin 1s ease-out 1;
+}
+
+@keyframes dim {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.dim {
+  animation: dim 0.75s ease-in-out 1;
 }
 
 
 /* Randomize button 
 ----------------------------------------- */
 .btn {
-  background-color: var(--bg-color-l);
+  background-color: var(--bg-color);
   border: none;
   border-radius: 100%;
   box-shadow: var(--shadow-elevation-medium);
@@ -211,7 +218,20 @@ body {
 /* Site Main 
 ----------------------------------------- */
 .site-main {
+  position: relative;
   width: 100%;
+}
+
+.site-main::after {
+  background: -webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,0)),to(var(--bg-color)));
+  background: linear-gradient(to bottom,rgba(0,0,0,0) 0, var(--bg-color) 100%);
+  bottom: 0;
+  content: "";
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  width: 100vw;
+  height: 25%;
 }
 
 
@@ -227,6 +247,7 @@ body {
   padding: var(--deck-offset-top) var(--site-gutter) var(--deck-offset-top);
   scroll-padding-top: var(--deck-offset-top);
   scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
 }
 
 
@@ -325,6 +346,7 @@ body {
   }
 
   .btn {
+    background-color: var(--bg-color-l);
     border-radius: 10px;
     padding: 15px;
     transform: none;
