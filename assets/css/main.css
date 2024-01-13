@@ -85,6 +85,7 @@ p, h1, h2, h3, h4, h5, h6 {
 @media (min-width: 500px) {
   :root {
     --card-gap: 35px;
+    --site-menu-height: 80px;
     --site-gutter: 50px;
   }
 }
@@ -136,13 +137,15 @@ p, h1, h2, h3, h4, h5, h6 {
 .btn {
   background-color: var(--bg-color-l);
   border: none;
-  border-radius: 10px;
-  box-shadow: none;
+  border-radius: 100%;
+  box-shadow: var(--shadow-elevation-medium);
   cursor: pointer;
-  padding: 15px;
+  padding: 20px;
+  transform: translateY(-20px);
 
   &:active {
     background-color: var(--bg-color-ll);
+    box-shadow: var(--shadow-elevation-low);
   }
 }
 
@@ -155,7 +158,7 @@ p, h1, h2, h3, h4, h5, h6 {
   color: var(--primary-color);
   fill: var(--primary-color);
   pointer-events: none;
-  width: 24px;
+  width: 32px;
 }
 
 
@@ -168,9 +171,9 @@ body {
   flex-direction: column;
   font-family: system-ui;
   font-size: 1rem;
+  height: 100lvh;
   justify-content: center;
   overflow: hidden;
-  padding-bottom: var(--site-menu-height);
   scroll-behavior: smooth;
 }
 
@@ -192,9 +195,7 @@ body {
 /* Site Menu 
 ----------------------------------------- */
 .site-menu {
-  background-color: var(--bg-color);
   bottom: 0;
-  box-shadow: var(--shadow-elevation-medium);
   color: var(--heading-color);
   display: grid;
   font-size: 1.25rem;
@@ -221,7 +222,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--card-gap);
-  height: calc(100vh - var(--site-menu-height) );
+  height: 100lvh;
   overflow-y: auto;
   padding: var(--deck-offset-top) var(--site-gutter) var(--deck-offset-top);
   scroll-padding-top: var(--deck-offset-top);
@@ -317,8 +318,24 @@ body {
   }
 
   .site-menu {
+    background-color: var(--bg-color);
     bottom: auto;
+    box-shadow: var(--shadow-elevation-medium);
     top: 0;
+  }
+
+  .btn {
+    border-radius: 10px;
+    padding: 15px;
+    transform: none;
+  }
+
+  .icon {
+    width: 24px;
+  }
+
+  .deck {
+    height: calc(100vh - var(--site-menu-height));
   }
 
   .card {
