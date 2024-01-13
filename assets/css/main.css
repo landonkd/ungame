@@ -143,7 +143,7 @@ p, h1, h2, h3, h4, h5, h6 {
 /* Randomize button 
 ----------------------------------------- */
 .btn {
-  background-color: var(--primary-color);
+  background-color: var(--primary-color-d);
   border: none;
   border-radius: 100%;
   box-shadow: var(--shadow-elevation-medium);
@@ -152,7 +152,7 @@ p, h1, h2, h3, h4, h5, h6 {
   transform: translateY(-20px);
 
   &:active {
-    background-color: var(--primary-color-d);
+    background-color: var(--primary-color);
     box-shadow: var(--shadow-elevation-low);
   }
 }
@@ -229,7 +229,7 @@ body {
   background: linear-gradient(to bottom,rgba(0,0,0,0) 0, var(--bg-color) 100%);
   bottom: 0;
   content: "";
-  height: 20%;
+  height: 40%;
   left: 0;
   pointer-events: none;
   position: absolute;
@@ -238,7 +238,7 @@ body {
 }
 
 .site-main::after {
-  height: 25%;
+  height: 50%;
 }
 
 
@@ -350,6 +350,14 @@ body {
     bottom: auto;
     box-shadow: var(--shadow-elevation-medium);
     top: 0;
+  }
+
+  .site-main::before {
+    height: 20%;
+  }
+
+  .site-main::after {
+    height: 25%;
   }
 
   .btn {
