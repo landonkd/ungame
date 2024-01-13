@@ -149,6 +149,7 @@ p, h1, h2, h3, h4, h5, h6 {
   box-shadow: var(--shadow-elevation-medium);
   cursor: pointer;
   padding: 20px;
+  pointer-events: auto;
   transform: translateY(-20px);
 
   &:active {
@@ -209,6 +210,7 @@ body {
   font-size: 1.25rem;
   height: var(--site-menu-height);
   place-items: center;
+  pointer-events: none;
   position: fixed;
   text-align: center;
   width: 100%;
