@@ -84,12 +84,12 @@ p, h1, h2, h3, h4, h5, h6 {
 @media (min-width: 500px) {
   :root {
     --card-gap: 35px;
-    --site-header-height: 75px;
+    --site-header-height: 70px;
     --site-gutter: 50px;
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1920px) {
   :root {
     --card-gap: 50px;
   }
@@ -225,7 +225,7 @@ body {
 }
 
 .card--end .card__question {
-  font-size: 7.5vw;
+  font-size: 3rem;
   font-weight: 900;
 }
 
@@ -233,7 +233,7 @@ body {
 /* Card inner elements
 ----------------------------------------- */
 .card__question {
-  font-size: 5.5vw;
+  font-size: clamp(1.25rem, 0.5rem + 4vw, 1.75rem);
   line-height: 1.25;
   text-align: center;
   text-wrap: balance;
@@ -252,7 +252,15 @@ body {
 ----------------------------------------- */
 @media (min-width: 500px) {
   .site-logo {
-    width: 115px;
+    width: 100px;
+  }
+
+  .card {
+    max-width: 420px;
+  }
+
+  .card__inner {
+    padding: 30px;
   }
 
   .card__id {
@@ -260,25 +268,7 @@ body {
   }
 }
 
-@media (min-width: 860px) {
-  .card {
-    max-width: 50vw;
-  }
-
-  .card__inner {
-    padding: 30px;
-  }
-
-  .card__question {
-    font-size: 3vw;
-  }
-
-  .card--end .card__question {
-    font-size: 5vw;
-  }
-}
-
-@media (min-width: 1200px) {
+@media (min-width: 1920px) {
   .card {
     max-width: 33.33vw;
     padding: 10px;
@@ -292,11 +282,11 @@ body {
     font-size: 2vw;
   }
 
-  .card--end .card__question {
-    font-size: 4vw;
-  }
-
   .card__id {
     font-size: 1vw;
+  }
+
+  .card--end .card__question {
+    font-size: 4vw;
   }
 }
