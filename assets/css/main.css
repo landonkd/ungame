@@ -47,7 +47,8 @@ p, h1, h2, h3, h4, h5, h6 {
 :root {
   /* Dark Theme */
   --bg-color: #171717;
-  --bg-color-l: #373737;
+  --bg-color-l: #272727;
+  --bg-color-ll: #373737;
   --primary-color: #FFF7E8;
   --border-color: var(--bg-color);
   --shadow-color: 0deg 0% 0%;
@@ -56,7 +57,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
   /* Measures */
   --card-gap: 20px;
-  --site-header-height: 50px;
+  --site-menu-height: 70px;
   --site-gutter: 20px;
   --deck-offset-top: var(--card-gap);
 
@@ -84,7 +85,6 @@ p, h1, h2, h3, h4, h5, h6 {
 @media (min-width: 500px) {
   :root {
     --card-gap: 35px;
-    --site-header-height: 70px;
     --site-gutter: 50px;
   }
 }
@@ -93,6 +93,69 @@ p, h1, h2, h3, h4, h5, h6 {
   :root {
     --card-gap: 50px;
   }
+}
+
+
+/* Animations 
+----------------------------------------- */
+@keyframes bounce {
+  0%,30%,50%,to {
+    transform: translateY(0)
+  }
+  20% {
+    transform: translateY(-12px)
+  }
+  40% {
+    transform: translateY(-7px)
+  }
+}
+
+.bounce {
+  animation: bounce 1s ease-out 1
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0)
+  }
+  20% {
+    transform: rotate(200deg)
+  }
+  80%,to {
+    transform: rotate(540deg)
+  }
+}
+
+.spin {
+  animation: spin 1s ease-out 1
+}
+
+
+/* Randomize button 
+----------------------------------------- */
+.btn {
+  background-color: var(--bg-color-l);
+  border: none;
+  border-radius: 10px;
+  box-shadow: none;
+  cursor: pointer;
+  padding: 15px;
+
+  &:active {
+    background-color: var(--bg-color-ll);
+  }
+}
+
+.icon-wrap {
+  pointer-events: none;
+}
+
+.icon {
+  aspect-ratio: 1/1;
+  color: var(--primary-color);
+  fill: var(--primary-color);
+  pointer-events: none;
+  width: 24px;
 }
 
 
@@ -107,7 +170,8 @@ body {
   font-size: 1rem;
   justify-content: center;
   overflow: hidden;
-  padding-top: var(--site-header-height);
+  padding-bottom: var(--site-menu-height);
+  scroll-behavior: smooth;
 }
 
 .sr-only {
@@ -125,32 +189,28 @@ body {
 }
 
 
-/* Site Main 
+/* Site Menu 
 ----------------------------------------- */
-.site-main {
-  width: 100%;
-}
-
-
-/* Header 
------------------------------------------ */
-.site-header {
+.site-menu {
   background-color: var(--bg-color);
+  bottom: 0;
   box-shadow: var(--shadow-elevation-medium);
   color: var(--heading-color);
   display: grid;
   font-size: 1.25rem;
-  height: var(--site-header-height);
+  height: var(--site-menu-height);
   place-items: center;
   position: fixed;
-  top: 0px;
   text-align: center;
   width: 100%;
   z-index: 10;
 }
 
-.site-logo {
-  width: 85px;
+
+/* Site Main 
+----------------------------------------- */
+.site-main {
+  width: 100%;
 }
 
 
@@ -161,7 +221,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--card-gap);
-  height: calc(100vh - var(--site-header-height) );
+  height: calc(100vh - var(--site-menu-height) );
   overflow-y: auto;
   padding: var(--deck-offset-top) var(--site-gutter) var(--deck-offset-top);
   scroll-padding-top: var(--deck-offset-top);
@@ -251,8 +311,14 @@ body {
 /* Breakpoints
 ----------------------------------------- */
 @media (min-width: 500px) {
-  .site-logo {
-    width: 100px;
+  body {
+    padding-top: var(--site-menu-height);
+    padding-bottom: 0;
+  }
+
+  .site-menu {
+    bottom: auto;
+    top: 0;
   }
 
   .card {

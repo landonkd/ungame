@@ -14,10 +14,8 @@
   <link rel="apple-touch-icon" href="favicon.svg" />
 
   <link rel="stylesheet" href="assets/css/main.css" />
-  <!-- <script src="assets/js/main.js"></script> -->
-  
-  <!-- Register Service Worker -->
   <script>
+    <!-- Register Service Worker -->
     navigator.serviceWorker.register('sw.js');
     // Cleanup old cache on page load
     if (navigator.serviceWorker.controller) {
@@ -30,283 +28,285 @@
 
 <body>
 
-  <!-- Site Header -->
-  <header class="site-header">
-    <h1>
-      <svg class="site-logo" role="img" aria-labelledby="ungame-nameplate" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 117 25">
-        <title id="ungame-nameplate">Ungame</title>
-        <path d="M17.466 14.496c0 1.408-.192 2.699-.576 3.872-.363 1.173-.907 2.187-1.632 3.04-.704.832-1.59 1.483-2.656 1.952-1.067.448-2.304.661-3.712.64h-.032c-1.557.021-2.88-.224-3.968-.736s-1.973-1.205-2.656-2.08A8.978 8.978 0 0 1 .73 18.112a14.353 14.353 0 0 1-.448-3.616V.16h5.536v13.92c0 .576.053 1.12.16 1.632.128.512.32.96.576 1.344.256.384.576.693.96.928.384.213.843.32 1.376.32.533 0 .992-.107 1.376-.32.384-.235.693-.544.928-.928a3.79 3.79 0 0 0 .544-1.344 6.71 6.71 0 0 0 .192-1.632V.16h5.536v14.336ZM31.434.192h5.696V24h-5.44l-6.4-11.712V24h-5.695V.192h5.472l6.367 11.68V.192Zm24.689 19.392a11.78 11.78 0 0 1-1.472 1.696 9.671 9.671 0 0 1-1.888 1.408c-.683.405-1.44.736-2.272.992a9.62 9.62 0 0 1-2.624.352h-.032c-1.43 0-2.688-.235-3.776-.704-1.088-.47-2.005-1.12-2.752-1.952-.725-.832-1.29-1.824-1.696-2.976-.405-1.152-.63-2.41-.672-3.776V9.696c0-1.28.192-2.496.576-3.648.384-1.152.95-2.155 1.696-3.008.747-.875 1.675-1.568 2.784-2.08 1.11-.512 2.39-.768 3.84-.768h.032c1.45.064 2.624.32 3.52.768.917.427 1.643.928 2.176 1.504.555.576.97 1.152 1.248 1.728.277.576.523 1.024.736 1.344l-4.416 2.912a24.409 24.409 0 0 0-.384-.8 2.657 2.657 0 0 0-.576-.832 2.833 2.833 0 0 0-.896-.64c-.363-.192-.821-.288-1.376-.288-1.067 0-1.92.363-2.56 1.088-.619.704-.928 1.643-.928 2.816v4.64c0 .576.096 1.12.288 1.632.192.49.448.917.768 1.28.341.341.736.619 1.184.832.448.213.939.32 1.472.32.747.021 1.344-.107 1.792-.384.47-.277.821-.63 1.056-1.056v-1.184h-2.528v-4.608h7.68v8.32ZM71.705 24l-2.144-6.272h-4.64L62.809 24h-6.112L63.673.192h7.168L77.817 24h-6.112ZM99.736.192V24H94.04v-8.32L91.128 24h-3.456l-2.976-8.576V24H79V.192h5.472L89.4 14.016 94.36.192h5.376Zm16.887 5.376h-9.216v3.84h6.784v5.376h-6.784v3.84h9.216V24h-14.592V.192h14.592v5.376Z" fill="#FFF7E8"/>
-      </svg>
-      <span class="sr-only">Ungame</span>
-    </h1>
-  </header>
+  <!-- Site Menu -->
+  <div class="site-menu">
+    <button class="btn btn--randomize" type="button">
+      <div class="icon-wrap icon-wrap--randomize">
+        <svg aria-hidden="true" class="icon icon--randomize" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><rect x="40" y="40" width="176" height="176" rx="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"/><circle cx="104" cy="104" r="16"/><circle cx="152" cy="152" r="16"/></svg>
+      </div>
+      <span class="sr-only">Randomize</span>
+    </button>
+  </div>
 
   <!-- Site Main -->
   <main class="site-main">
 
-    <!-- Deck -->
     <div class="deck">
       <!-- Begin Cards -->
-      <div class="card">
+      <div class="card" id="card-1">
         <div class="card__inner">
           <p class="card__question">What family holiday experience has left pleasant memories?</p>
           <small class="card__id">1</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-2">
         <div class="card__inner">
           <p class="card__question">What job would you never do and why?</p>
           <small class="card__id">2</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-3">
         <div class="card__inner">
           <p class="card__question">Talk about a funny school experience.</p>
           <small class="card__id">3</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-4">
         <div class="card__inner">
           <p class="card__question">Talk about a mistake you made recently.</p>
           <small class="card__id">4</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-5">
         <div class="card__inner">
           <p class="card__question">What have you done in the past three months that makes you feel proud?</p>
           <small class="card__id">5</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-6">
         <div class="card__inner">
           <p class="card__question">Talk about a time when you really had fun with your family.</p>
           <small class="card__id">6</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-7">
         <div class="card__inner">
           <p class="card__question">What do you like best about your appearance? Why?</p>
           <small class="card__id">7</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-8">
         <div class="card__inner">
           <p class="card__question">Share a time when you were really frightened.</p>
           <small class="card__id">8</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-9">
         <div class="card__inner">
           <p class="card__question">Share a time when you felt lonely.</p>
           <small class="card__id">9</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-10">
         <div class="card__inner">
           <p class="card__question">If my family inherited a million dollars, I would like for us to...</p>
           <small class="card__id">10</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-11">
         <div class="card__inner">
           <p class="card__question">Describe in detail your ideal day.</p>
           <small class="card__id">11</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-12">
         <div class="card__inner">
           <p class="card__question">What is your earliest memory?</p>
           <small class="card__id">12</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-13">
         <div class="card__inner">
           <p class="card__question">What do you like to make with your hands?</p>
           <small class="card__id">13</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-14">
         <div class="card__inner">
           <p class="card__question">What do you hope to be free from?</p>
           <small class="card__id">14</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-15">
         <div class="card__inner">
           <p class="card__question">What smell brings up a strong memory for you?</p>
           <small class="card__id">15</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-16">
         <div class="card__inner">
           <p class="card__question">If you had an extra hour in your day, what would you do?</p>
           <small class="card__id">16</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-17">
         <div class="card__inner">
           <p class="card__question">What do you spend the most time thinking about?</p>
           <small class="card__id">17</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-18">
         <div class="card__inner">
           <p class="card__question">What character trait would you like to cultivate in yourself?</p>
           <small class="card__id">18</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-19">
         <div class="card__inner">
           <p class="card__question">What kind of social gathering do you enjoy most?</p>
           <small class="card__id">19</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-20">
         <div class="card__inner">
           <p class="card__question">What is your most valuable emotional skill?</p>
           <small class="card__id">20</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-21">
         <div class="card__inner">
           <p class="card__question">What mistake would you make again?</p>
           <small class="card__id">21</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-22">
         <div class="card__inner">
           <p class="card__question">What possession do you currently treasure?</p>
           <small class="card__id">22</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-23">
         <div class="card__inner">
           <p class="card__question">What is the best vacation you've ever taken?</p>
           <small class="card__id">23</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-24">
         <div class="card__inner">
           <p class="card__question">What are you most looking forward to?</p>
           <small class="card__id">24</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-25">
         <div class="card__inner">
           <p class="card__question">What story do you tell over and over again?</p>
           <small class="card__id">25</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-26">
         <div class="card__inner">
           <p class="card__question">What song brings up strong feelings for you?</p>
           <small class="card__id">26</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-27">
         <div class="card__inner">
           <p class="card__question">Whom do you hope to resemble one day?</p>
           <small class="card__id">27</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-28">
         <div class="card__inner">
           <p class="card__question">What do you praise your parents for?</p>
           <small class="card__id">28</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-29">
         <div class="card__inner">
           <p class="card__question">What movie are you always in the mood to watch?</p>
           <small class="card__id">29</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-30">
         <div class="card__inner">
           <p class="card__question">Who of the opposite sex inspires you?</p>
           <small class="card__id">30</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-31">
         <div class="card__inner">
           <p class="card__question">What do you most commonly dream about?</p>
           <small class="card__id">31</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-32">
         <div class="card__inner">
           <p class="card__question">What do you dislike about your appearance? Why?</p>
           <small class="card__id">32</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-33">
         <div class="card__inner">
           <p class="card__question">Complete this statement: "Something I really appreciate is..."</p>
           <small class="card__id">33</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-34">
         <div class="card__inner">
           <p class="card__question">Describe the members of your family in one word.</p>
           <small class="card__id">34</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-35">
         <div class="card__inner">
           <p class="card__question">Share a time when you felt lonely or left out.</p>
           <small class="card__id">35</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-36">
         <div class="card__inner">
           <p class="card__question">Tell about someone who encourages you. </p>
           <small class="card__id">36</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-37">
         <div class="card__inner">
           <p class="card__question">Share a time when you were really frightened.</p>
           <small class="card__id">37</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-38">
         <div class="card__inner">
           <p class="card__question">Share a funny thing that happened to you when you were a child.</p>
           <small class="card__id">38</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-39">
         <div class="card__inner">
           <p class="card__question">Tell about your favorite TV show and why you like it.</p>
           <small class="card__id">39</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-40">
         <div class="card__inner">
           <p class="card__question">Give an imaginary gift to each member of your family (something they would really like).</p>
           <small class="card__id">40</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-41">
         <div class="card__inner">
           <p class="card__question">Share an embarrassing childhood experience</p>
           <small class="card__id">41</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-42">
         <div class="card__inner">
           <p class="card__question">Talk about something beautiful you saw in this week.</p>
           <small class="card__id">42</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-43">
         <div class="card__inner">
           <p class="card__question">What have you done in the past 3 months that makes you feel proud?</p>
           <small class="card__id">43</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-44">
         <div class="card__inner">
           <p class="card__question">Complete the sentence: "I hope...."</p>
           <small class="card__id">44</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-45">
         <div class="card__inner">
           <p class="card__question">Share a scary dream.</p>
           <small class="card__id">45</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-46">
         <div class="card__inner">
           <p class="card__question">Talk about a happy school experience.</p>
           <small class="card__id">46</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-47">
         <div class="card__inner">
           <p class="card__question">Share a childhood memory about bedtime.</p>
           <small class="card__id">47</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-48">
         <div class="card__inner">
           <p class="card__question">Which fantasy character are you most like? (Or, would you like to be?) Why?</p>
           <small class="card__id">48</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-49">
         <div class="card__inner">
           <p class="card__question">Share a compliment you receieved recently.</p>
           <small class="card__id">49</small>
         </div>
-      </div><div class="card">
+      </div><div class="card" id="card-50">
         <div class="card__inner">
           <p class="card__question">Tell about a family tradition that you enjoy.</p>
           <small class="card__id">50</small>
         </div>
       </div>
-      <!-- End card -->
-      <div class="card card--end">
+      <!-- End .card -->
+      <div class="card card--end" id="card-51">
         <div class="card__inner">
           <p class="card__question">The End</p>
         </div>
       </div>
     </div>
+    <!-- End .deck -->
     
   </main>
+
+  <!-- JS -->
+  <script src="assets/js/main.js"></script>
 
 </body>
 
