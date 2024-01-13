@@ -154,7 +154,6 @@ p, h1, h2, h3, h4, h5, h6 {
   &:active {
     background-color: var(--primary-color-d);
     box-shadow: var(--shadow-elevation-low);
-    transform: translateY(-18px);
   }
 }
 
@@ -361,7 +360,6 @@ body {
 
     &:active {
       background-color: var(--bg-color-ll);
-      transform: translateY(2px);
     }
   }
 
