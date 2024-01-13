@@ -50,6 +50,7 @@ p, h1, h2, h3, h4, h5, h6 {
   --bg-color-l: #272727;
   --bg-color-ll: #373737;
   --primary-color: #FFF7E8;
+  --primary-color-d: #E8D8C8;
   --border-color: var(--bg-color);
   --shadow-color: 0deg 0% 0%;
   --heading-color: var(--primary-color);
@@ -142,17 +143,18 @@ p, h1, h2, h3, h4, h5, h6 {
 /* Randomize button 
 ----------------------------------------- */
 .btn {
-  background-color: var(--bg-color);
+  background-color: var(--primary-color);
   border: none;
-  border-radius: 20px;
+  border-radius: 100%;
   box-shadow: var(--shadow-elevation-medium);
   cursor: pointer;
   padding: 20px;
   transform: translateY(-20px);
 
   &:active {
-    background-color: var(--bg-color-ll);
+    background-color: var(--primary-color-d);
     box-shadow: var(--shadow-elevation-low);
+    transform: translateY(-18px);
   }
 }
 
@@ -162,8 +164,8 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .icon {
   aspect-ratio: 1/1;
-  color: var(--primary-color);
-  fill: var(--primary-color);
+  color: var(--text-color);
+  fill: var(--text-color);
   pointer-events: none;
   width: 32px;
 }
@@ -251,7 +253,7 @@ body {
   height: 100lvh;
   overflow-y: auto;
   padding: var(--deck-offset-top) var(--site-gutter) var(--deck-offset-top);
-  scroll-padding-top: var(--deck-offset-top);
+  scroll-padding-top: calc(var(--deck-offset-top) - 1px);
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
@@ -356,9 +358,16 @@ body {
     border-radius: 12px;
     padding: 15px;
     transform: none;
+
+    &:active {
+      background-color: var(--bg-color-ll);
+      transform: translateY(2px);
+    }
   }
 
   .icon {
+    color: var(--primary-color);
+    fill: var(--primary-color);
     width: 24px;
   }
 
