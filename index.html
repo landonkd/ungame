@@ -3,12 +3,288 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="This noncompetitive game encourages people to share thoughts, feelings, and ideas as they explore a variety of topics." />
-  <meta name="theme-color" content="#171717">
-  <link rel="icon" href="favicon.svg">
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <script src="assets/js/main.js"></script>
+  <meta name="description" content="These questions encourage people to share thoughts, feelings, and ideas as they explore a variety of topics." />
+  <meta name="theme-color" content="#171717" />
+  <meta name=”apple-mobile-web-app-capable” content=”yes”>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+
+  <!-- @todo: Service worker for assets? -->
+  <!-- <link rel="stylesheet" href="assets/css/main.css" /> -->
+  <!-- <script src="assets/js/main.js"></script> -->
   <title>Ungame</title>
+
+  <style>
+    /* Reset 
+    ----------------------------------------- */
+    /*
+      1. Use a more-intuitive box-sizing model.
+    */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    /*
+      2. Remove default margin
+    */
+    * {
+      margin: 0;
+    }
+    /*
+      Typographic tweaks!
+      3. Add accessible line-height
+      4. Improve text rendering
+    */
+    body {
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    /*
+      5. Improve media defaults
+    */
+    img, picture, video, canvas, svg {
+      display: block;
+      max-width: 100%;
+    }
+    /*
+      6. Remove built-in form typography styles
+    */
+    input, button, textarea, select {
+      font: inherit;
+    }
+    /*
+      7. Avoid text overflows
+    */
+    p, h1, h2, h3, h4, h5, h6 {
+      overflow-wrap: break-word;
+    }
+
+    /* Vars 
+    ----------------------------------------- */
+    :root {
+      /* Dark Theme */
+      --bg-color: #171717;
+      --bg-color-l: #373737;
+      --primary-color: #FFF7E8;
+      --border-color: var(--bg-color);
+      --shadow-color: 0deg 0% 0%;
+      --heading-color: var(--primary-color);
+      --text-color: var(--bg-color);
+
+      /* Measures */
+      --card-gap: 20px;
+      --site-header-height: 50px;
+      --site-gutter: 20px;
+      --deck-offset-top: var(--card-gap);
+
+      /* Shadows */
+      --shadow-elevation-low:
+        0px 0.5px 0.6px hsl(var(--shadow-color) / 0.34),
+        0px 0.8px 0.9px -1.2px hsl(var(--shadow-color) / 0.34),
+        0px 2px 2.3px -2.5px hsl(var(--shadow-color) / 0.34);
+      --shadow-elevation-medium:
+        0px 0.5px 0.6px hsl(var(--shadow-color) / 0.36),
+        0px 1.6px 1.8px -0.8px hsl(var(--shadow-color) / 0.36),
+        0px 4.1px 4.6px -1.7px hsl(var(--shadow-color) / 0.36),
+        0px 10px 11.3px -2.5px hsl(var(--shadow-color) / 0.36);
+      --shadow-elevation-high:
+        0px 0.5px 0.6px hsl(var(--shadow-color) / 0.34),
+        0px 2.9px 3.3px -0.4px hsl(var(--shadow-color) / 0.34),
+        0px 5.5px 6.2px -0.7px hsl(var(--shadow-color) / 0.34),
+        0px 9px 10.1px -1.1px hsl(var(--shadow-color) / 0.34),
+        -0.1px 14.3px 16.1px -1.4px hsl(var(--shadow-color) / 0.34),
+        -0.1px 22.4px 25.2px -1.8px hsl(var(--shadow-color) / 0.34),
+        -0.1px 34px 38.3px -2.1px hsl(var(--shadow-color) / 0.34),
+        -0.2px 50.1px 56.4px -2.5px hsl(var(--shadow-color) / 0.34);
+    }
+
+    @media (min-width: 500px) {
+      :root {
+        --card-gap: 35px;
+        --site-header-height: 70px;
+        --site-gutter: 50px;
+      }
+    }
+    @media (min-width: 1920px) {
+      :root {
+        --card-gap: 50px;
+      }
+    }
+
+    /* Base 
+    ----------------------------------------- */
+    body {
+      align-items: center;
+      background-color: var(--bg-color);
+      display: flex;
+      flex-direction: column;
+      font-family: system-ui;
+      font-size: 1rem;
+      justify-content: center;
+      overflow: hidden;
+      padding-top: var(--site-header-height);
+    }
+    .sr-only {
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Site Main 
+    ----------------------------------------- */
+    .site-main {
+      width: 100%;
+    }
+
+    /* Header 
+    ----------------------------------------- */
+    .site-header {
+      background-color: var(--bg-color);
+      box-shadow: var(--shadow-elevation-medium);
+      color: var(--heading-color);
+      display: grid;
+      font-size: 1.25rem;
+      height: var(--site-header-height);
+      place-items: center;
+      position: fixed;
+      top: 0px;
+      text-align: center;
+      width: 100%;
+      z-index: 10;
+    }
+    .site-logo {
+      width: 85px;
+    }
+
+    /* Deck
+    ----------------------------------------- */
+    .deck {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      gap: var(--card-gap);
+      height: calc(100vh - var(--site-header-height) );
+      overflow-y: auto;
+      padding: var(--deck-offset-top) var(--site-gutter) var(--deck-offset-top);
+      scroll-padding-top: var(--deck-offset-top);
+      scroll-snap-type: y mandatory;
+    }
+
+    /* Card
+    ----------------------------------------- */
+    .card {
+      align-items: center;
+      background-color: var(--primary-color);
+      border-radius: 16px;
+      box-shadow: var(--shadow-elevation-medium);
+      color: var(--text-color);
+      display: flex;
+      flex-shrink: 0;
+      font-weight: bold;
+      justify-content: center;
+      padding: 5px;
+      scroll-snap-align: start;
+      width: 100%;
+    }
+    .card__inner {
+      align-items: center;
+      aspect-ratio: 3/2;
+      border: 10px solid var(--border-color);
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+      width: 100%;
+    }
+    .card__inner::before,
+    .card__inner::after {
+      content: '';
+      display: block;
+      height: 100%;
+      pointer-events: none;
+      position: absolute;
+      width: 100%;
+    }
+    .card__inner::before {
+      border: 10px solid var(--border-color);
+    }
+    .card__inner::after {
+      border: 10px solid var(--primary-color);
+      border-radius: 8px;
+    }
+
+    /* Card modifiers
+    ----------------------------------------- */
+    .card--end {
+      opacity: 0.1;
+    }
+    .card--end .card__question {
+      font-size: 3rem;
+      font-weight: 900;
+    }
+
+
+    /* Card inner elements
+    ----------------------------------------- */
+    .card__question {
+      font-size: clamp(1.25rem, 0.5rem + 4vw, 1.75rem);
+      line-height: 1.25;
+      text-align: center;
+      text-wrap: balance;
+    }
+    .card__id {
+      font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+      font-size: 0.875rem;
+      position: absolute;
+      bottom: 10px;
+      right: 15px;
+    }
+
+    /* Breakpoints
+    ----------------------------------------- */
+    @media (min-width: 500px) {
+      .site-logo {
+        width: 100px;
+      }
+      .card {
+        max-width: 420px;
+      }
+      .card__inner {
+        padding: 30px;
+      }
+      .card__id {
+        font-size: 1rem;
+      }
+    }
+    @media (min-width: 1920px) {
+      .card {
+        max-width: 33.33vw;
+        padding: 10px;
+      }
+      .card__inner {
+        border-width: 20px;
+      }
+      .card__question {
+        font-size: 2vw;
+      }
+      .card__id {
+        font-size: 1vw;
+      }
+      .card--end .card__question {
+        font-size: 4vw;
+      }
+    }
+  </style>
 </head>
 
 <body>
