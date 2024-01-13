@@ -8,14 +8,14 @@
   "description": "These questions encourage people to share thoughts, feelings, and ideas as they explore a variety of topics.",
   "icons": [
     {
-      "src": "favicon.svg",
-      "purpose": "maskable any",
-      "sizes": "any"
-    },
-    {
       "src": "assets/icons/appIcon.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "favicon.svg",
+      "purpose": "maskable any",
+      "sizes": "any"
     }
   ]
 }

@@ -9,11 +9,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Ungame</title>
 
+  <!-- Web App Manifest and SW -->
   <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="favicon.svg" />
-  <link rel="apple-touch-icon" href="favicon.svg" />
-
-  <link rel="stylesheet" href="assets/css/main.css" />
   <script>
     <!-- Register Service Worker -->
     navigator.serviceWorker.register('sw.js');
@@ -24,9 +21,13 @@
       });
     }
   </script>
+
+  <link rel="icon" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+  <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 
-<body>
+<body style="background-color: #171717;">
 
   <!-- Site Menu -->
   <div class="site-menu">

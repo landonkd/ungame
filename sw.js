@@ -19,7 +19,10 @@ let limits = {
 };
 
 // Core assets
-let coreAssets = [];
+let coreAssets = [
+	'/assets/css/main.css',
+	'/assets/js/main.js',
+];
 
 
 //
@@ -126,7 +129,7 @@ self.addEventListener('fetch', function (event) {
 
 				// If there's no item in cache, respond with a fallback
 				return caches.match(request).then(function (response) {
-					return response || caches.match('/offline.html');
+					return response || caches.match('/index.html');
 				});
 
 			})
