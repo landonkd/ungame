@@ -3,7 +3,7 @@
 //
 
 // Version number
-let version = '1.0.1';
+let version = '1.0.2';
 
 // Cache IDs
 let coreID = `${version}_core`;
@@ -138,7 +138,7 @@ self.addEventListener('fetch', function (event) {
 
 	// CSS & JavaScript
 	// Offline-first
-	if (request.headers.get('Accept').includes('text/css') || request.headers.get('Accept').includes('application/javascript')) {
+	if (request.headers.get('Accept').includes('text/css') || request.headers.get('Accept').includes('text/javascript') || request.headers.get('Accept').includes('application/javascript')) {
 		event.respondWith(
 			caches.match(request).then(function (response) {
 				return response || fetch(request).then(function (response) {
