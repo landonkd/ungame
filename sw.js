@@ -21,7 +21,8 @@ let limits = {
 // Core assets
 // @todo: Why doesn't this work as expected? Debug later.
 let coreAssets = [
-	'',
+	'/index.html',
+	'/favicon.svg'
 ];
 
 
