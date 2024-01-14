@@ -154,11 +154,17 @@ p, h1, h2, h3, h4, h5, h6 {
   pointer-events: auto;
   touch-action: manipulation;
   transform: translateY(-20px);
+  transition: background-color 0.1s linear;
 }
 
 .btn:active {
   background-color: var(--primary-color);
   box-shadow: var(--shadow-elevation-low);
+}
+
+.btn:focus-visible {
+  outline: 1px dotted #212121;
+  outline: 5px auto -webkit-focus-ring-color;
 }
 
 .icon-wrap {
