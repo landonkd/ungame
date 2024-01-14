@@ -20,8 +20,8 @@ let limits = {
 
 // Core assets
 let coreAssets = [
-	'/assets/css/main.css',
-	'/assets/js/main.js'
+	'',
+	''
 ];
 
 
@@ -217,10 +217,24 @@ self.addEventListener('fetch', function (event) {
 		);
 	}
 
-	console.log(request.headers.get('Accept'));
-	console.log('===============');
-	console.log(request.url);
-	console.log('===============');
+	// By URL Match
+	// Offline-first
+	else if (request.url.includes('/assets/main.js')) {
+
+		console.log(request.url);
+
+		event.respondWith(
+			caches.match(request).then(function (response) {
+				return response || fetch(request).then(function (response) {
+
+					// Return the response
+					return response;
+
+				});
+			})
+		);
+		return;
+	}
 
 });
 
