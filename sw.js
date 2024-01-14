@@ -138,7 +138,7 @@ self.addEventListener('fetch', function (event) {
 
 	// CSS & JavaScript
 	// Offline-first
-	if (request.headers.get('Accept').includes('text/css') || request.headers.get('Accept').includes('text/javascript') || request.headers.get('Accept').includes('application/javascript')) {
+	else if (request.headers.get('Accept').includes('text/css') || request.headers.get('Accept').includes('text/javascript') || request.headers.get('Accept').includes('application/javascript')) {
 
 		console.log(request.headers.get('Accept'));
 		console.log('===============');
@@ -158,7 +158,7 @@ self.addEventListener('fetch', function (event) {
 
 	// Images & Fonts
 	// Offline-first
-	if (request.headers.get('Accept').includes('image') || request.url.includes('your-web-font')) {
+	else if (request.headers.get('Accept').includes('image') || request.url.includes('your-web-font')) {
 		event.respondWith(
 			caches.match(request).then(function (response) {
 				return response || fetch(request).then(function (response) {
@@ -182,7 +182,7 @@ self.addEventListener('fetch', function (event) {
 
 	// API Calls
 	// Offline-first
-	if (request.url.includes('/my-api-endpoint')) {
+	else if (request.url.includes('/my-api-endpoint')) {
 		event.respondWith(
 			caches.match(request).then(function (response) {
 
