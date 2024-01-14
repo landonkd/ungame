@@ -19,9 +19,9 @@ let limits = {
 };
 
 // Core assets
+// @todo: Why doesn't this work as expected? Debug later.
 let coreAssets = [
-	'/assetw/css/main.css',
-	'/assets/js/main.js',
+	'',
 ];
 
 
