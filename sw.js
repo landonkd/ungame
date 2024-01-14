@@ -219,6 +219,8 @@ self.addEventListener('fetch', function (event) {
 
 	console.log(request.headers.get('Accept'));
 	console.log('===============');
+	console.log(request.url);
+	console.log('===============');
 
 });
 
