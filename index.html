@@ -22,7 +22,10 @@
     }
   </script>
 
-  <link rel="icon" href="favicon.png" />
+  <!-- For browsers that don't support .svg favicons (pretty much just Safari right now): -->
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <!-- For browsers that DO support SVG favicons (most of them now): -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
   <!-- Main CSS -->
   <link rel="stylesheet" href="assets/css/main.css" />
