@@ -217,9 +217,9 @@ self.addEventListener('fetch', function (event) {
 		);
 	}
 
-	// By URL Match
+	// By URL Match (Because the JS above didn't work for some reason??)
 	// Offline-first
-	else if (request.url.includes('/assets/main.js')) {
+	else if (request.url.includes('assets/js/main.js')) {
 
 		console.log(request.url);
 
