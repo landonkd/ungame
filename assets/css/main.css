@@ -148,15 +148,17 @@ p, h1, h2, h3, h4, h5, h6 {
   border-radius: 100%;
   box-shadow: var(--shadow-elevation-medium);
   cursor: pointer;
+  outline: 3px solid var(--bg-color);
+  outline-offset: -5px;
   padding: 20px;
   pointer-events: auto;
   touch-action: manipulation;
   transform: translateY(-20px);
+}
 
-  &:active {
-    background-color: var(--primary-color);
-    box-shadow: var(--shadow-elevation-low);
-  }
+.btn:active {
+  background-color: var(--primary-color);
+  box-shadow: var(--shadow-elevation-low);
 }
 
 .icon-wrap {
@@ -281,7 +283,7 @@ body {
 .card__inner {
   align-items: center;
   aspect-ratio: 3/2;
-  border: 10px solid var(--border-color);
+  border: 5px solid var(--border-color);
   border-radius: 12px;
   display: flex;
   justify-content: center;
@@ -368,10 +370,10 @@ body {
     border-radius: 12px;
     padding: 15px;
     transform: none;
+  }
 
-    &:active {
-      background-color: var(--bg-color-ll);
-    }
+  .btn:active {
+    background-color: var(--bg-color-ll);
   }
 
   .icon {
@@ -389,6 +391,7 @@ body {
   }
 
   .card__inner {
+    border-width: 10px;
     padding: 30px;
   }
 
