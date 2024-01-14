@@ -12,7 +12,7 @@
   <!-- Web App Manifest and SW -->
   <link rel="manifest" href="manifest.json" />
   <script>
-    <!-- Register Service Worker -->
+    // Register Service Worker
     navigator.serviceWorker.register('sw.js');
     // Cleanup old cache on page load
     if (navigator.serviceWorker.controller) {
@@ -25,9 +25,10 @@
   <link rel="icon" href="favicon.svg" />
   <link rel="apple-touch-icon" href="favicon.svg" />
   <link rel="stylesheet" href="assets/css/main.css" />
+  <script src="assets/js/main.js" type="text/javascript"></script>
 </head>
 
-<body style="background-color: #171717;">
+<body>
 
   <!-- Site Menu -->
   <div class="site-menu">
@@ -305,9 +306,6 @@
     <!-- End .deck -->
     
   </main>
-
-  <!-- JS -->
-  <script src="assets/js/main.js" type="text/javascript"></script>
 
 </body>
 
