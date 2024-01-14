@@ -20,9 +20,8 @@ let limits = {
 
 // Core assets
 let coreAssets = [
-	'./index.html',
-	'./assets/css/main.css',
-	'./assets/js/main.js',
+	'/assets/css/main.css',
+	'/assets/js/main.js'
 ];
 
 
