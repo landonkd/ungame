@@ -140,9 +140,6 @@ self.addEventListener('fetch', function (event) {
 	// Offline-first
 	else if (request.headers.get('Accept').includes('text/css') || request.headers.get('Accept').includes('text/javascript') || request.headers.get('Accept').includes('application/javascript')) {
 
-		console.log(request.headers.get('Accept'));
-		console.log('===============');
-
 		event.respondWith(
 			caches.match(request).then(function (response) {
 				return response || fetch(request).then(function (response) {
@@ -219,6 +216,9 @@ self.addEventListener('fetch', function (event) {
 			})
 		);
 	}
+
+	console.log(request.headers.get('Accept'));
+	console.log('===============');
 
 });
 
