@@ -20,8 +20,8 @@ let limits = {
 
 // Core assets
 let coreAssets = [
-	'',
-	''
+	'/assetw/css/main.css',
+	'/assets/js/main.js',
 ];
 
 
@@ -220,8 +220,6 @@ self.addEventListener('fetch', function (event) {
 	// By URL Match (Because the JS above didn't work for some reason??)
 	// Offline-first
 	else if (request.url.includes('assets/js/main.js')) {
-
-		console.log(request.url);
 
 		event.respondWith(
 			caches.match(request).then(function (response) {
